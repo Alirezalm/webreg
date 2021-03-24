@@ -1,0 +1,87 @@
+header {
+    background-color: #252627;
+    font-family: Dela Gothic One;
+    color: white;
+    text-align: center;
+
+
+
+}
+
+.header-title{
+    padding: 10% 15%;
+
+}
+.features {
+    padding: 15% 15%;
+
+    background-color: ghostwhite;
+    text-align: center;
+}
+
+#icon{
+    padding-bottom: 15%;
+    color: orange;
+}
+
+#icon:hover {
+    color: black;
+}
+.features h5{
+    font-family: Dela Gothic One;
+    /*font-size: 1.5rem;*/
+    text-align: center;
+}
+
+.features p{
+    font-family: sans-serif ;
+    text-align: center;
+    padding: 7%;
+}
+
+#reg-form {
+    padding: 15% 15%;
+    background-color: #252627;
+    color: whitesmoke;
+    font-family: sans-serif ;
+    text-align: center;
+
+}
+#myform{
+
+    background-color: #252627;
+    color: whitesmoke;
+    font-family: sans-serif;
+    padding: 7% 10%;
+
+}
+
+#myform button{
+    background-color: orange;
+}
+#myform button:hover{
+    background-color: black;
+}
+
+#myform h4{
+    font-family: Dela Gothic One;
+    color: whitesmoke;
+    padding: 7% 10%;
+}
+
+.my-footer{
+    padding: 2% 2%;
+    font-family: Dela Gothic One;
+    text-align: center;
+}
+.my-footer .footer-icon a{
+    padding: 2% 2%;
+    color: orange;
+}
+/*.my-footer .footer-icon a:active {*/
+/*    color: orange;*/
+/*}*/
+.my-footer .footer-icon a:hover {
+    color: black;
+}
+
