@@ -1,26 +1,40 @@
 <template id="register-form">
-    <form>
-        <div class="form-group">
-            <label for="firstname">First Name: </label>
-            <input type="text" class="form-control" id="firstname">
-        </div>
-        <div class="form-group">
-            <label for="firstname">Last Name: </label>
-            <input type="text" class="form-control" id="firstname">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address:</label>
-            <input type="email" class="form-control" id="exampleInputEmail1">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password:</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Repeat password:</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <button type="submit" class="btn btn-primary">Register</button>
-    </form>
+    <div v-if="!filledForm">
+        <form @submit.prevent="validation">
+            <div class="form-group">
+                <label for="username">User name: </label>
+                <input v-model="userInfo.userName" type="text" class="form-control" id="username"
+                       placeholder="e.g. Alex.brody" required>
+            </div>
+            <div class="form-group">
+                <label for="firstname">First Name: </label>
+                <input v-model="userInfo.firstName" type="text" class="form-control" id="firstname"
+                       placeholder="e.g. Alex" required>
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name: </label>
+                <input v-model="userInfo.lastName" type="text" class="form-control" id="lastname"
+                       placeholder="e.g. Brody" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address:</label>
+                <input v-model="userInfo.email" type="email" class="form-control" id="exampleInputEmail1"
+                       placeholder="e.g. example@abs.com" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password:</label>
+                <input v-model="userInfo.password" type="password" class="form-control" id="exampleInputPassword1"
+                       placeholder="password" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword2">Repeat password:</label>
+                <input v-model="userInfo.passwordRepeated" type="password" class="form-control"
+                       id="exampleInputPassword2" placeholder="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+
+
 </template>
 

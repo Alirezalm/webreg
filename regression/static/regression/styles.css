@@ -52,7 +52,7 @@ header {
     background-color: #252627;
     color: whitesmoke;
     font-family: sans-serif;
-    padding: 7% 10%;
+    padding: 7% 5%;
 
 }
 
@@ -84,4 +84,11 @@ header {
 .my-footer .footer-icon a:hover {
     color: black;
 }
+
+#confirmation {
+    padding: 7% 15%;
+    text-align: center;
+    font-family: Dela Gothic One;
+}
+
 

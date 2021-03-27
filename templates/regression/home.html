@@ -13,9 +13,13 @@
 
 </head>
 {% include 'regression/regform.html' %}
-
-<body>
-
+{% include 'regression/sign_form.html' %}
+<body id="app">
+{% if auth %}
+    <div id="auth-id"> 1</div>
+{% else %}
+    <div id="auth-id"> 0 </div>
+{% endif %}
 <nav class="navbar  fixed-top navbar-expand-lg navbar-dark " style="background-color: #2d2e29">
     <a class="navbar-brand" href="#">onReg</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -24,20 +28,21 @@
     </button>
     <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Dashboard</a>
+            <li v-if="isAuth" class="nav-item active">
+                <a  class="nav-link" href="#">Dashboard</a>
+
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#">Register</a>
+                <a class="nav-link" href="#app">Register</a>
             </li>
             <li class="nav-item active ">
-                <a class="nav-link" href="#">Contact</a>
+                <a  v-if="!isAuth" class="nav-link" href="#">Login</a>
             </li>
         </ul>
     </div>
 </nav>
 
-<div  class="row ">
+<div class="row ">
     <div class="col">
         <header>
             <div class="row">
@@ -74,14 +79,15 @@
 
 </section>
 
-<section id="app">
+<section >
     <div class="row" id="myform">
-        <div class="col">
-            <h4> onReg is completely free </h4>
-            <h4> Fill the application form to access the computation dashboard </h4>
+        <div class="col-lg-6">
+            <sign-in v-if="!isAuth"></sign-in>
         </div>
-        <div class="col">
-            <reg-form></reg-form>
+        <div class="col-lg-6">
+            <reg-form v-if="!isAuth"></reg-form>
+
+
         </div>
     </div>
 </section>
@@ -93,6 +99,9 @@
         <a href="https://www.linkedin.com/in/alireza-olama-213a6a107/"> <i class="fab fa-linkedin-in fa-3x"></i></a>
     </div>
 </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"
+        integrity="sha512-otOZr2EcknK9a5aa3BbMR9XOjYKtxxscwyRHN6zmdXuRfJ5uApkHB7cz1laWk2g8RKLzV9qv/fl3RPwfCuoxHQ=="
+        crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/25821a399f.js" crossorigin="anonymous"></script>
 <script src="{% static 'regression/app.js' %}"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -104,5 +113,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
         integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
         crossorigin="anonymous"></script>
+
 </body>
 </html>
