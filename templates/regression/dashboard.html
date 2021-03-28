@@ -3,7 +3,7 @@
     <div class="col">
     <h3> onReg </h3>
         <p>random linear regression problem</p>
-        <form @submit.prevemt="onSolve">
+        <form @submit.prevent="onSolve">
             <div class="form-group">
                 <label for="features">Number of features: </label>
                 <input v-model="problem.features" type="number" min="1" class="form-control " id="features"
@@ -17,10 +17,10 @@
             <button type="submit" class="btn btn-primary">Solve</button>
         </form>
     </div>
-    <div v-if="solution" class="col">
-        <h3>Solution</h3>
+    <div class="col">
+        <h3 v-if="solution"  style="text-align: center">Solution</h3>
         <br>
-        <h5 v-for="sol in solution">[[sol.toString().slice(0,6)]]</h5>
+        <h5 style="text-align: center" v-for="sol in solution">[[sol.toString().slice(0,6)]]</h5>
     </div>
 
 </template>
