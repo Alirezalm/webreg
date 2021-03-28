@@ -8,18 +8,18 @@ const app = Vue.createApp({
 
         }
     },
-    mounted(){
+    mounted() {
 
         this.isAuth = Boolean(Number(document.getElementById('auth-id').innerText))
         // this.onLogout()
     },
-    methods:{
-        loginDone(userLogin){
+    methods: {
+        loginDone(userLogin) {
             this.userLogin = userLogin
             this.isAuth = true
 
         },
-        onLogout(){
+        onLogout() {
             this.url = 'http://127.0.0.1:8000/logout'
             axios.get(this.url).then(res => {
                 this.isAuth = false
@@ -39,7 +39,7 @@ app.component('reg-form', {
             userInfo: {},
             message: '',
             filledForm: false,
-            url : '',
+            url: '',
 
         }
     },
@@ -63,12 +63,11 @@ app.component('reg-form', {
             })
         },
 
-        validation(){
-            if (this.userInfo.password !== this.userInfo.passwordRepeated){
+        validation() {
+            if (this.userInfo.password !== this.userInfo.passwordRepeated) {
                 this.message = 'Passwords does not match. Try again'
                 alert(this.message)
-            }
-            else{
+            } else {
                 this.register()
             }
         }
@@ -86,8 +85,8 @@ app.component('sign-in', {
         }
     },
     methods: {
-        onLogin(){
-            this.url =  'http://127.0.0.1:8000/login/'
+        onLogin() {
+            this.url = 'http://127.0.0.1:8000/login/'
             axios.post(this.url, JSON.stringify(this.userLogin)).then(res => {
                 console.log(res.data)
                 this.$emit('login-done', this.userLogin)
@@ -98,22 +97,22 @@ app.component('sign-in', {
     }
 })
 
-app.component('dashboard',{
+app.component('dashboard', {
     template: '#dashboard',
     delimiters: ['[[', ']]'],
-    data(){
+    data() {
         return {
             problem: {},
             url: '',
-            solution: ''
+            solution: []
         }
     },
-    methods:{
-        onSolve(){
+    methods: {
+        onSolve() {
             this.url = 'http://127.0.0.1:8000/regression/'
-            axios.post(this.url, JSON.stringify(this.problem)).then(res=>{
-                this.solution = res.data['solution']
-                console.log(this.solution)
+            axios.post(this.url, JSON.stringify(this.problem)).then(res => {
+                this.solution.push(res.data['solution'])
+                console.log(this.solution.length)
             })
         }
     }

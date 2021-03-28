@@ -1,7 +1,7 @@
 <template id="dashboard">
 
     <div class="col">
-    <h3> onReg </h3>
+        <h3> onReg </h3>
         <p>random linear regression problem</p>
         <form @submit.prevent="onSolve">
             <div class="form-group">
@@ -18,9 +18,37 @@
         </form>
     </div>
     <div class="col">
-        <h3 v-if="solution"  style="text-align: center">Solution</h3>
-        <br>
-        <h5 style="text-align: center" v-for="sol in solution">[[sol.toString().slice(0,6)]]</h5>
+        <h3 v-if="solution.length" style="text-align: center">Solution</h3>
+        <div v-if="solution.length">
+            <table class="table" style="color: white">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+{#                    <th scope="col">samples</th>#}
+{#                    <th scope="col">features</th>#}
+                    <th scope="col">objective</th>
+                    <th scope="col">error</th>
+                    <th scope="col">iter</th>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr v-for="item in solution">
+                        <th scope="row">#</th>
+{#                        <td>[[problem.samples]]</td>#}
+{#                        <td>[[problem.features]]</td>#}
+                        <td>[[item.obj.toString().slice(0,7)]]</td>
+                        <td>[[item.error.toString().slice(0,7)]]</td>
+                        <td>[[item.max_iter]]</td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+        </div>
+
     </div>
 
 </template>
