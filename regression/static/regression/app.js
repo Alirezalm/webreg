@@ -103,9 +103,20 @@ app.component('dashboard',{
     delimiters: ['[[', ']]'],
     data(){
         return {
-            n: 100
+            problem: {},
+            url: '',
+            solution: ''
         }
     },
+    methods:{
+        onSolve(){
+            this.url = 'http://127.0.0.1:8000/regression/'
+            axios.post(this.url, JSON.stringify(this.problem)).then(res=>{
+                this.solution = res.data['solution']
+                console.log(this.solution)
+            })
+        }
+    }
 
 })
 app.mount('#app')

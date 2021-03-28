@@ -83,16 +83,15 @@
 
 <section>
     <div class="row" id="myform">
-        <div class="col-lg-6">
-            <sign-in @login-done="loginDone" v-if="!isAuth"></sign-in>
+        <div v-if="!isAuth" class="col-lg-6">
+            <sign-in @login-done="loginDone" ></sign-in>
         </div>
-        <div class="col-lg-6">
-            <reg-form v-if="!isAuth"></reg-form>
+        <div v-if="!isAuth" class="col-lg-6">
+            <reg-form ></reg-form>
         </div>
-        <div v-if="isAuth" class="">
-        <dashboard></dashboard>
 
-        </div>
+        <dashboard v-if="isAuth"></dashboard>
+
     </div>
 </section>
 

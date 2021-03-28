@@ -1,17 +1,26 @@
 <template id="dashboard">
-    <h3> onReg </h3>
-    <p>random linear regression problem</p>
 
-{#    <form>#}
-{#        <div class="form-group">#}
-{#            <label  for="features">Number of features: </label>#}
-{#            <input v-model="problem"  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="features">#}
-{#            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>#}
-{#        </div>#}
-{#        <div class="form-group">#}
-{#            <label for="exampleInputPassword1">Password</label>#}
-{#            <input type="password" class="form-control" id="exampleInputPassword1">#}
-{#        </div>#}
-{#        <button type="submit" class="btn btn-primary">Submit</button>#}
-{#    </form>#}
+    <div class="col">
+    <h3> onReg </h3>
+        <p>random linear regression problem</p>
+        <form @submit.prevemt="onSolve">
+            <div class="form-group">
+                <label for="features">Number of features: </label>
+                <input v-model="problem.features" type="number" min="1" class="form-control " id="features"
+                       placeholder="e.g. 10">
+            </div>
+            <div class="form-group">
+                <label for="samples">Number of sample points: </label>
+                <input v-model="problem.samples" type="number" min="10" class="form-control " id="samples"
+                       placeholder="e.g. 100">
+            </div>
+            <button type="submit" class="btn btn-primary">Solve</button>
+        </form>
+    </div>
+    <div v-if="solution" class="col">
+        <h3>Solution</h3>
+        <br>
+        <h5 v-for="sol in solution">[[sol.toString().slice(0,6)]]</h5>
+    </div>
+
 </template>
