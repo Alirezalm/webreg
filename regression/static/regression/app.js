@@ -2,13 +2,29 @@ const app = Vue.createApp({
     delimiters: ['[[', ']]'],
     data() {
         return {
-            isAuth: false
+            isAuth: false,
+            url: '',
+            userLogin: ''
 
         }
     },
     mounted(){
 
         this.isAuth = Boolean(Number(document.getElementById('auth-id').innerText))
+        // this.onLogout()
+    },
+    methods:{
+        loginDone(userLogin){
+            this.userLogin = userLogin
+            this.isAuth = true
+
+        },
+        onLogout(){
+            this.url = 'http://127.0.0.1:8000/logout'
+            axios.get(this.url).then(res => {
+                this.isAuth = false
+            })
+        }
     }
 
 })
@@ -63,6 +79,34 @@ app.component('reg-form', {
 app.component('sign-in', {
     template: '#sign-in-form',
     delimiters: ['[[', ']]'],
+    data() {
+        return {
+            userLogin: {},
+            url: ''
+        }
+    },
+    methods: {
+        onLogin(){
+            this.url =  'http://127.0.0.1:8000/login/'
+            axios.post(this.url, JSON.stringify(this.userLogin)).then(res => {
+                console.log(res.data)
+                this.$emit('login-done', this.userLogin)
+            })
+
+
+        }
+    }
+})
+
+app.component('dashboard',{
+    template: '#dashboard',
+    delimiters: ['[[', ']]'],
+    data(){
+        return {
+            n: 100
+        }
+    },
+
 })
 app.mount('#app')
 
