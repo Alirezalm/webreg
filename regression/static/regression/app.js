@@ -20,7 +20,7 @@ const app = Vue.createApp({
 
         },
         onLogout() {
-            this.url = 'http://127.0.0.1:8000/logout'
+            this.url = 'https://secret-beyond-37804.herokuapp.com/logout'
             axios.get(this.url).then(res => {
                 this.isAuth = false
             })
@@ -56,7 +56,7 @@ app.component('reg-form', {
             this.filledForm = true
             const userJsonData = JSON.stringify(this.userInfo)
             console.log(userJsonData)
-            this.url = 'http://127.0.0.1:8000/'
+            this.url = 'https://secret-beyond-37804.herokuapp.com'
             axios.post(this.url, userJsonData).then(res => {
 
                 console.log(res)
@@ -86,7 +86,7 @@ app.component('sign-in', {
     },
     methods: {
         onLogin() {
-            this.url = 'http://127.0.0.1:8000/login/'
+            this.url = 'https://secret-beyond-37804.herokuapp.com/login/'
             axios.post(this.url, JSON.stringify(this.userLogin)).then(res => {
                 console.log(res.data)
                 this.$emit('login-done', this.userLogin)
@@ -109,7 +109,7 @@ app.component('dashboard', {
     },
     methods: {
         onSolve() {
-            this.url = 'http://127.0.0.1:8000/regression/'
+            this.url = 'https://secret-beyond-37804.herokuapp.com/regression/'
             axios.post(this.url, JSON.stringify(this.problem)).then(res => {
                 this.solution.push(res.data['solution'])
                 console.log(this.solution.length)
